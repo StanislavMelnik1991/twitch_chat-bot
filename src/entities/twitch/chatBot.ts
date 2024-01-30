@@ -4,7 +4,7 @@ const TWITCH_CHANNEL = process.env.TWITCH_CHANNEL as string;
 const TWITCH_USER = process.env.TWITCH_USER as string;
 const TWITCH_TOKEN = process.env.TWITCH_TOKEN as string;
 
-const opts = {
+const opts: Options = {
   identity: {
     username: TWITCH_USER,
     password: `oauth:${TWITCH_TOKEN}`
@@ -17,6 +17,7 @@ const opts = {
 export class TwitchChatBot {
   client: Client
   constructor() {
+    console.log(opts)
     this.client = new Client(opts);
     this.client.on('message', this.onMessageHandler);
     this.client.on('connected', this.onConnectedHandler);

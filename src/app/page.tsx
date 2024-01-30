@@ -3,18 +3,15 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { useCallback } from "react";
 import { connectTwitch, disconnectTwitch } from "@/features/twitch/chatBot";
-import Link from "next/link";
 
 export default function Home() {
 
   const connect = useCallback(async ()=>{
-    'use client'
     const data = new FormData();
     const res = await connectTwitch(data)
     console.log(res)
   },[])
   const disconnect = useCallback(async ()=>{
-    'use client'
     const data = new FormData();
     const res = await disconnectTwitch(data)
     console.log(res)
@@ -23,7 +20,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <button onClick={connect}>connect</button>
-      <button onClick={connect}>disconnect</button>
+      <button onClick={disconnect}>disconnect</button>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
